@@ -2,18 +2,18 @@
 
 ####################
 # Lab 1 Exercise 5
-# Name: 
-# Student No: 
-# Lab Group: 
+# Name: Chew Ee Jia
+# Student No: A0217981W
+# Lab Group: 13
 ####################
 
 # Fill the below up
-hostname=
-machine_hardware=
-max_user_process_count=
-user_process_count=
-user_with_most_processes=
-mem_free_percentage=
+hostname=$(hostname)
+machine_hardware=$(uname -m)
+max_user_process_count=$(ulimit -u)
+user_process_count=$(ps -e --no-headers | wc -l)
+user_with_most_processes=$(ps -eo user|sort|uniq -c|sort -n|tail -1|awk '{print $2}')
+mem_free_percentage=$(free | awk '/^Mem/ {a=($4/$2 * 100); print a}')
 
 echo "Hostname: $hostname"
 echo "Machine Hardware: $machine_hardware"
